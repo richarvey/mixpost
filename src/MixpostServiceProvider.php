@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Inovector\Mixpost\Commands\ClearServicesCache;
 use Inovector\Mixpost\Commands\ClearSettingsCache;
 use Inovector\Mixpost\Commands\CreateMastodonApp;
+use Inovector\Mixpost\Commands\CreatePixelfedApp;
 use Inovector\Mixpost\Commands\DeleteOldData;
 use Inovector\Mixpost\Commands\ImportAccountAudience;
 use Inovector\Mixpost\Commands\ImportAccountData;
@@ -44,6 +45,7 @@ class MixpostServiceProvider extends PackageServiceProvider
             ->hasCommands([
                 PublishAssetsCommand::class,
                 CreateMastodonApp::class,
+                CreatePixelfedApp::class,
                 ClearSettingsCache::class,
                 ClearServicesCache::class,
                 RunScheduledPosts::class,

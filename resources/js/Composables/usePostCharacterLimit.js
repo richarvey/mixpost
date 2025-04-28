@@ -1,6 +1,7 @@
 import {computed} from "vue";
 import CountTextCharacters from "../Util/CountTextCharacters";
 import Mastodon from "../SocialProviders/Mastodon";
+import Pixelfed from "../SocialProviders/Pixelfed";
 import Twitter from "twitter-text";
 import {minBy, maxBy} from "lodash";
 import useEditor from "@/Composables/useEditor";
@@ -45,6 +46,8 @@ export default function usePostCharacterLimit(props) {
         switch (providerId) {
             case 'mastodon':
                 return Mastodon.getPostLength(text);
+            case 'pixelfed':
+                return Pixelfed.getPostLength(text);
             case 'twitter':
                 return Twitter.getTweetLength(text);
             default:

@@ -2,6 +2,17 @@
 
 All notable changes to `mixpost` will be documented in this file.
 
+## v2.1.4 - 2025-04-28
+
+**New features**
+
+- Added support for Pixelfed social network
+  - Connect Pixelfed accounts
+  - Create and manage posts
+  - Handle media uploads
+  - Manage account settings
+  - View account statistics
+
 ## v2.1.3 - 2025-03-06
 
 **Fixes**
