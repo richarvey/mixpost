@@ -16,7 +16,8 @@ class MediaUploadFile extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', File::types($this->allowedTypes())->max($this->max())]
+            'file' => ['required', File::types($this->allowedTypes())->max($this->max())],
+            'alt_text' => ['nullable', 'string', 'max:500'],
         ];
     }
 

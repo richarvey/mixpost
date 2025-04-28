@@ -1,5 +1,5 @@
 <script setup>
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import ExclamationCircleIcon from "@/Icons/ExclamationCircle.vue"
 import VideoSolidIcon from "@/Icons/VideoSolid.vue"
 
@@ -21,6 +21,15 @@ const props = defineProps({
         default: true
     }
 })
+
+const emit = defineEmits(['update:altText'])
+
+const altText = ref(props.media.alt_text || '')
+
+const updateAltText = (value) => {
+    altText.value = value
+    emit('update:altText', value)
+}
 
 const imgHeightClass = computed(() => {
     return {
@@ -52,7 +61,7 @@ const imgHeightClass = computed(() => {
             <img
                 :src="media.thumb_url"
                 :title="media.name"
-                alt="Image"
+                :alt="altText"
                 loading="lazy"
                 class="rounded-md"
                 :class="[imgHeightClass, {'w-full': imgWidthFull}]"
@@ -60,6 +69,15 @@ const imgHeightClass = computed(() => {
         </div>
         <template v-if="showCaption">
             <figcaption class="mt-xs text-sm break-all">{{ media.name }}</figcaption>
+            <div class="mt-xs">
+                <input
+                    type="text"
+                    v-model="altText"
+                    @input="updateAltText($event.target.value)"
+                    placeholder="Add ALT text for accessibility"
+                    class="w-full px-2 py-1 text-sm border rounded"
+                />
+            </div>
         </template>
     </figure>
 </template>

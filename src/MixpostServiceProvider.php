@@ -40,7 +40,8 @@ class MixpostServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasRoute('web')
             ->hasMigrations([
-                'create_mixpost_tables'
+                'create_mixpost_tables',
+                '2024_03_21_000000_add_alt_text_to_media_table'
             ])
             ->hasCommands([
                 PublishAssetsCommand::class,
